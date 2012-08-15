@@ -10,7 +10,7 @@ pygments: false
 # so be sure to set them if your theme uses them.
 #
 title : PR Lambert
-tagline: My name is PR and I'm the CEO and Co-founder of Learndot.
+tagline: My name is PR. I'm the CEO and Co-founder of <a href="http://www.learndot.com">Learndot</a>.
 author :
   name : PR Lambert
   email : pr@prlambert.com
