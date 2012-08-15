@@ -7,5 +7,4 @@ http://prlambert.github.com/pages.html
 http://prlambert.github.com/sitemap.txt
 http://prlambert.github.com/tags.html
 
-http://prlambert.github.com/2012/08/14/second-post
-http://prlambert.github.com/2012/08/14/new-post
+http://prlambert.github.com/2012/08/14/starting-post
