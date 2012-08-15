@@ -1,0 +1,11 @@
+
+http://prlambert.github.com/archive.html
+http://prlambert.github.com/atom.xml
+http://prlambert.github.com/categories.html
+http://prlambert.github.com/index.html
+http://prlambert.github.com/pages.html
+http://prlambert.github.com/sitemap.txt
+http://prlambert.github.com/tags.html
+
+http://prlambert.github.com/2012/08/14/second-post
+http://prlambert.github.com/2012/08/14/new-post
