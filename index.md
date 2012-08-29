@@ -5,6 +5,12 @@ tagline: Supporting tagline
 ---
 {% include JB/setup %}
 
+<div class="header">
+          <!-- <h1><a href="{{ site.url }}">{{ site.title }}</a></h1> -->
+    <h1 class="topheader">{{ site.title }}</h1>      
+	<h2>{{ site.tagline }}</h2>
+</div>
+
 {% for post in site.posts %}
 <article>
 

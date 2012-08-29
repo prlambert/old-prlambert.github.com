@@ -1,12 +1,13 @@
 /* Override some defaults */
 html, body {
-  background-color: #eee;
+  background-color: #F5F5F5;
 }
+
 .navbar {
   margin-bottom: 0;
 }
 .container > footer {
-  margin-top: 25px;
+  margin-top: 40px;
 }
 /* .container > footer p {*/
 /*   text-align: center; [> center align it with the container <]*/
@@ -27,13 +28,16 @@ html, body {
 
 /* Page header tweaks */
 .page-header {
-  background-color: #f5f5f5;
-  padding: 20px 20px 10px;
-  margin: -20px -20px 20px;
+	margin-top: 40px;
 }
 
-.topbar .btn {
-  border: 0;
+h1.topheader {
+	font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+	font-weight: 700;
+	font-size: 64px;
+	line-height: 70px;
+	color: #25272B;
+	margin-bottom: 20px;
 }
 
 
@@ -79,7 +83,6 @@ html, body {
 }
 
 footer {
-	margin-top: 50px;
     margin-bottom: 40px;
 }
 
@@ -120,14 +123,7 @@ footer {
 	display: block;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0,0,0,0.3);
-}
-
-.bottom-cover-canvas {
-	display: block;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(255,255,255,0.3);
+	background-color: rgba(0,0,0,0.2);
 }
 
 .name-mark {
@@ -137,6 +133,11 @@ footer {
 	/*background-color: #111;*/
 	background-color: rgb(10,10,10);
 	height: 104px;
+
+	transition: background 0.6s ease-in-out;
+	-moz-transition: background 0.6s ease-in-out;
+	-webkit-transition: background 0.6s ease-in-out;
+	-o-transition: background 0.6s ease-in-out;
 }
 
 .name-mark h1 {
@@ -169,7 +170,15 @@ footer {
 	background-color: #eee;
 }
 
+.post p {
+	font-size: 18px;
+	line-height: 28px;
+	color: #333;
+}
 
+.content-end {
+	margin-top: 50px;
+}
 
 
 

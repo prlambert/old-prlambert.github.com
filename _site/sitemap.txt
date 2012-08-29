@@ -7,7 +7,6 @@ http://prlambert.github.com/pages.html
 http://prlambert.github.com/sitemap.txt
 http://prlambert.github.com/tags.html
 
-http://prlambert.github.com/2012/08/28/neat-scala-null---option-idiom
+http://prlambert.github.com/2012/08/29/network-effects
 http://prlambert.github.com/2012/08/28/interview-on-lining-things-up
-http://prlambert.github.com/2012/08/28/hello-world
 http://prlambert.github.com/2012/08/14/starting-post
