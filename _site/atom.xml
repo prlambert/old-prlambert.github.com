@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>PR Lambert</title>
- <link href="http://prlambert.github.com/atom.xml" rel="self"/>
- <link href="http://prlambert.github.com"/>
- <updated>2012-11-04T11:39:28-08:00</updated>
- <id>http://prlambert.github.com</id>
+ <link href="www.prlambert.com/atom.xml" rel="self"/>
+ <link href="www.prlambert.com"/>
+ <updated>2012-11-21T23:32:05-08:00</updated>
+ <id>www.prlambert.com</id>
  <author>
    <name>PR Lambert</name>
    <email>pr@prlambert.com</email>
@@ -13,63 +13,65 @@
 
  
  <entry>
-   <title>Network Effects</title>
-   <link href="http://prlambert.github.com/2012/08/29/network-effects"/>
-   <updated>2012-08-29T00:00:00-07:00</updated>
-   <id>http://prlambert.github.com/2012/08/29/network-effects</id>
-   <content type="html">&lt;p&gt;A network effect: when the value derived from a system increases with the number of people that use it.&lt;/p&gt;
+   <title>TechCrunch vs. HN: Traffic and Conversions from the front page</title>
+   <link href="www.prlambert.com/2012/11/21/hn-vs-tc"/>
+   <updated>2012-11-21T00:00:00-08:00</updated>
+   <id>www.prlambert.com/2012/11/21/hn-vs-tc</id>
+   <content type="html">
+&lt;script src=&quot;http://d3js.org/d3.v2.js&quot;&gt;&lt;/script&gt;
 
-&lt;p&gt;I’ve been slightly obsessed with the idea of network effects lately, but for good reason: Every major internet success has been created by leveraging network effects: from email to Airbnb. A system with network effects trends towards a natural monopoly and grows virally (a new name for an old effect). These are things the vast majority of web entrepreneurs hope for, yet it appears many startups arenʼt designed to have them - just because you deploy on the web doesnʼt mean you have network effects. They donʼt come for free.&lt;/p&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
 
-&lt;p&gt;Letʼs consider the properties that lead to this phenomenon by way of examples.&lt;/p&gt;
+&lt;p&gt;
+Last Tuesday, Learndot was both featured in TechCrunch and the made the front page of Hacker News at approximately the same time. 
+At 9am PST, TechCrunch posted &lt;a href=&quot;http://techcrunch.com/2012/11/13/learndot-launches-its-learning-platform-for-corporate-universities/&quot;&gt;their story&lt;/a&gt; on our launch and pivot. 
+At 10am, we submitted to Hacker News the story of our 9-month rebranding process which made the front page and &lt;a href=&quot;http://hnrankings.info/4779410/&quot;&gt;stayed there for 14 hours&lt;/a&gt;.
+&lt;/p&gt;
 
-&lt;p&gt;Pools and Graphs Network effects seem to be created two ways, by pools and graphs. Most real life successes are hybrids.&lt;/p&gt;
+&lt;p&gt;
+Since the stories came out at nearly the same time and pointed to different pages on our site, I can easily compare the quantity and quality of traffic coming from TC vs. HN.
+What I found may surprise you – it certainly surprised me.
+&lt;/p&gt;
 
-&lt;p&gt;Pools Craigslist, eBay, Airbnb, Etsy (marketplaces): Sellers want large markets (more buyers). Buyers want choice and competition (more sellers). When you participate in a market you are either a buyer or a seller. Either way, you increase the value of the system. Aggregating buyers and sellers into a single pool generates huge network effects and gives a marketplace gravity and momentum. The flip side: Very small startup marketplaces donʼt have much pull and have to solve the chicken and the egg problem of who comes first, the buyers or the sellers.&lt;/p&gt;
+&lt;h1&gt;The Vanity Metrics&lt;/h1&gt;
+&lt;h3&gt;Page Views, Uniques, Pages per visit, and Time on Site&lt;/h3&gt;
 
-&lt;p&gt;Graphs Email “the Killer App of the internet” (also, Instant Messenger): The digital version of the telephone - the classic example of a network effect. The more people that use email, the more valuable email becomes. Email wouldn’t be that great if you could only contact 10 people; Instant Messenger is only as good as the people on the network to chat with.&lt;/p&gt;
+&lt;div id=&quot;stacked1&quot;&gt;&lt;/div&gt;
 
-&lt;p&gt;Simple communication systems form an undirected graph, with an edge between every person/node. The value of email is the a function of number of edges on ‘your’ node - that is, its value grows in O(n^2).&lt;/p&gt;
+&lt;script src=&quot;http://d3js.org/d3.v3.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
 
-&lt;p&gt;Facebook, LinkedIn (bidirectional social networks): Facebook is significantly more fun when your friends use it too. Your value from the systems derives from your ability to map your various social graphs and leverage them to do useful things like share lolcats (communicate across edges) and discover common friends with a stranger (search the graph). Essential a communication system, like email (and grows for the same reasons), but with a more highly structured graph that provides additional data and abilities.&lt;/p&gt;
+var n = 2, // number of layers
+    m = 2, // number of samples per layer
+    stack = d3.layout.stack(),
+    layers = stack(d3.range(n).map(function() { return [{x: 0, y: 2}, {x:1, y:0.5}]; })),
+    yStackMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); });
 
-&lt;p&gt;Hybrid Graph-Pools Twitter: Like Email, Facebook and LinkedIn, Twitter maps a certain type of social graph and the value of Twitter increases with the number of people you can add to your graph. But because of the directioned edges and public nature of Twitter, there are also substantial pool-type network effects. Barack Obama, CNN, and Ashton Kutcher are sellers of their brand, while their millions of followers are ‘buying’ it. Their value derives from the large pool of consumers of tweets, and for many (most?) people on Twitter, value derives from the concentration of interesting producers of tweets. Twitter has created a pool of PR distribution.&lt;/p&gt;
+var width = 420,
+    height = 420 
 
-&lt;p&gt;Wikipedia (and wikis generally): Obviously a pool of knowledge, but the ability to traverse the graph between pages certainly adds value as well. The more people that use Wikipedia, the larger the number of contributors: more knowledge, better knowledge (peer reviews, critiques), more pages, more value.&lt;/p&gt;
+var x = d3.scale.ordinal().domain(d3.range(m)).rangeRoundBands([0, 420], .25);
 
-&lt;p&gt;Google (and Yahoo, Bing, etc…): A slightly more interesting example, because Google is actually just a proxy for the World Wide Web itself: the value of Google increases every time there is a new user on the web - more information to index leads to a more search engine. The web is a graph de rigueur, and Google pools its data. The web has massive network effects - Google is the gatekeeper, to reasonably access humanityʼs largest information graph you must use it (Of course you donʼt &lt;em&gt;have&lt;/em&gt; to use it - there are competitors. Arguably the reason to use Google is itʼs superior pooling, but still Google has less of a long-term natural monopoly than any of the previous examples). In some sense search engines are an ʻappʼ leveraging another systemʼs graph, like Farmville to Facebook. In another sense, they are a critical piece of infrastructure for a usable web and are as such a piece of the greater system - perhaps the most network effect laden system ever concocted.&lt;/p&gt;
+var y = d3.scale.linear().domain([0, yStackMax]).range([height, 0]);
 
-&lt;p&gt;others: Github, YouTube&lt;/p&gt;
+var color = d3.scale.linear().domain([0, n - 1]).range([&quot;#aad&quot;, &quot;#556&quot;]);
 
-&lt;p&gt;The internet sans network (effects) Ok, what sites donʼt have network effects? The vast majority of browser-based software. Any site that isnʼt centered around a graph or a pool&lt;/p&gt;
+var xAxis = d3.svg.axis().scale(x).tickSize(1).tickPadding(6).orient(&quot;bottom&quot;);
 
-&lt;p&gt;‘Web-apps’, 37signals style: Small, sandboxed, productivity apps (time tracking, product management, invoicing, accounting, etc…) Any kind of ‘enterprise’ app you ever used, from a source code repository browser, to your university’s registration system. The majority of the Chrome App Store: From magazine readers and NPR listener, to weather apps and Chess.&lt;/p&gt;
+var svg = d3.select(&quot;#stacked1&quot;).append(&quot;svg&quot;).append(&quot;g&quot;)
 
-&lt;p&gt;The distinction is between viewing the web as a distribution channel or a global interconnected graph. Itʼs the difference between SaaS (distribution) and social-content centered web services (networks). The apps above use the web exclusively as a delivery platform - as a glorified intranet. Thatʼs not why the internet is such a revolution.&lt;/p&gt;
+var layer = svg.selectAll(&quot;.layer&quot;).data(layers).enter().append(&quot;g&quot;).attr(&quot;class&quot;, &quot;layer&quot;).style(&quot;fill&quot;, function(d, i) { return color(i); });
 
-&lt;p&gt;Same fields, different games The difference of approaches can be subtle and itʼs surprisingly easy to not realize that they are fundamentally different games. Consider DHHʼs famous Startup School talk rallying against playing ʻthe startup lotteryʼ and chiding the audience for worrying about ʻbeing viralʼ - this makes me think DHH doesnʼt see the difference. Playing on the same field does not the same game make.&lt;/p&gt;
+var rect = layer.selectAll(&quot;rect&quot;).data(function(d) { return d; }).enter().append(&quot;rect&quot;)
+            .attr(&quot;x&quot;, function(d) { return x(d.x); }).attr(&quot;y&quot;, height).attr(&quot;width&quot;, x.rangeBand()).attr(&quot;height&quot;, 0);
 
-&lt;p&gt;The network approach isnʼt playing the lottery - itʼs realizing where the power of the internet truly lies. Sure, you can build a million dollar internet business on the delivery approach - as 37 signals and many others have. But youʼre not going to build a billion dollar web business that way, thatʼs not why the internet is such a big deal.&lt;/p&gt;
+rect.transition().delay(function(d, i) { return i * 10; }).attr(&quot;y&quot;, function(d) { return y(d.y0 + d.y); })
+    .attr(&quot;height&quot;, function(d) { return y(d.y0) - y(d.y0 + d.y); });
 
-&lt;p&gt;Starstruck Itʼs clear now, after 15+ years, what gets me so excited about the internet, why I am devoting my life to working with it: it is a single virtual space, teaming with billions of human minds waiting to be interconnected in interesting ways. It is an ultra-dense warp core of brainpower, knowledge, and selves. Nothing close to this has existed before in humanity. Never have entrepreneurs and developers had such an ability to graph and pool our collective conscious, to create network effects. This is this most exciting time in history to be an entrepreneur - who wouldnʼt want this awesome potential as their canvas? With all due respect to the makers of invoice software, Iʼm going to shoot for the stars.&lt;/p&gt;</content>
- </entry>
- 
- <entry>
-   <title>Interview on Lining Things Up</title>
-   <link href="http://prlambert.github.com/2012/08/28/interview-on-lining-things-up"/>
-   <updated>2012-08-28T00:00:00-07:00</updated>
-   <id>http://prlambert.github.com/2012/08/28/interview-on-lining-things-up</id>
-   <content type="html">&lt;p&gt;Chad, who was a student in one of our courses, asked me to be on his show recently and talk about startups, GrowLab, and Vancouver. I thought I bombed it right away after, but it actually turned out pretty good. :)&lt;/p&gt;</content>
- </entry>
- 
- <entry>
-   <title>Starting Post</title>
-   <link href="http://prlambert.github.com/2012/08/14/starting-post"/>
-   <updated>2012-08-14T00:00:00-07:00</updated>
-   <id>http://prlambert.github.com/2012/08/14/starting-post</id>
-   <content type="html">&lt;p&gt;This is the first post.&lt;/p&gt;
+svg.append(&quot;g&quot;).attr(&quot;class&quot;, &quot;x axis&quot;).attr(&quot;transform&quot;, &quot;translate(0,&quot; + height + &quot;)&quot;).call(xAxis);
 
-&lt;p&gt;It is just an example.&lt;/p&gt;</content>
+&lt;/script&gt;
+</content>
  </entry>
  
  

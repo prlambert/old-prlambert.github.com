@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>PR Lambert</title>
+ <link href="www.prlambert.com/atom.xml" rel="self"/>
+ <link href="www.prlambert.com"/>
+ <updated>2012-11-21T22:50:24-08:00</updated>
+ <id>www.prlambert.com</id>
+ <author>
+   <name>PR Lambert</name>
+   <email>pr@prlambert.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>new post</title>
+   <link href="www.prlambert.com/2012/11/21/new-post"/>
+   <updated>2012-11-21T00:00:00-08:00</updated>
+   <id>www.prlambert.com/2012/11/21/new-post</id>
+   <content type="html"></content>
+ </entry>
+ 
+ 
+</feed>
