@@ -1,6 +1,9 @@
 /* Override some defaults */
 html, body {
   background-color: #F5F5F5;
+    font-size: 18px;
+    line-height: 28px;
+    color: #333;
 }
 
 .navbar {
@@ -173,10 +176,30 @@ footer {
 	font-size: 18px;
 	line-height: 28px;
 	color: #333;
+    margin: 20px 0;
+}
+
+.post li {
+	font-size: 18px;
+	line-height: 28px;
+	color: #333;
+}
+
+.post p.disclaimer {
+	font-size: 16px;
 }
 
 .content-end {
 	margin-top: 50px;
+}
+
+#footnotes {
+    margin-top: 50px;
+}
+
+#footnotes p {
+    border-top: 1px solid #f3f3f3;
+    font-size: 16px;
 }
 
 
