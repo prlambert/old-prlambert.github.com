@@ -4,7 +4,7 @@
  <title>PR Lambert</title>
  <link href="www.prlambert.com/atom.xml" rel="self"/>
  <link href="www.prlambert.com"/>
- <updated>2012-11-21T23:32:05-08:00</updated>
+ <updated>2013-01-28T19:01:34-08:00</updated>
  <id>www.prlambert.com</id>
  <author>
    <name>PR Lambert</name>
@@ -13,64 +13,232 @@
 
  
  <entry>
-   <title>TechCrunch vs. HN: Traffic and Conversions from the front page</title>
-   <link href="www.prlambert.com/2012/11/21/hn-vs-tc"/>
-   <updated>2012-11-21T00:00:00-08:00</updated>
-   <id>www.prlambert.com/2012/11/21/hn-vs-tc</id>
-   <content type="html">
-&lt;script src=&quot;http://d3js.org/d3.v2.js&quot;&gt;&lt;/script&gt;
-
-&lt;h1&gt;Introduction&lt;/h1&gt;
-
-&lt;p&gt;
-Last Tuesday, Learndot was both featured in TechCrunch and the made the front page of Hacker News at approximately the same time. 
-At 9am PST, TechCrunch posted &lt;a href=&quot;http://techcrunch.com/2012/11/13/learndot-launches-its-learning-platform-for-corporate-universities/&quot;&gt;their story&lt;/a&gt; on our launch and pivot. 
-At 10am, we submitted to Hacker News the story of our 9-month rebranding process which made the front page and &lt;a href=&quot;http://hnrankings.info/4779410/&quot;&gt;stayed there for 14 hours&lt;/a&gt;.
+   <title>TechCrunch vs. Hacker News: Which front page is better to launch your startup?</title>
+   <link href="www.prlambert.com/2013/01/29/tc-vs-hn"/>
+   <updated>2013-01-29T00:00:00-08:00</updated>
+   <id>www.prlambert.com/2013/01/29/tc-vs-hn</id>
+   <content type="html">&lt;p&gt;
+&lt;em&gt;
+Disclaimer: This is a single experiment. We are a B2B SaaS startup. We
+only launched once, at a specific time and date with millions of things
+beyond our control. Take everything said here with the appropriate
+quantity salt. Your mileage may vary. 
+&lt;/em&gt;
 &lt;/p&gt;
 
 &lt;p&gt;
-Since the stories came out at nearly the same time and pointed to different pages on our site, I can easily compare the quantity and quality of traffic coming from TC vs. HN.
-What I found may surprise you – it certainly surprised me.
+&lt;strong&gt;TECHCRUNCH:&lt;/strong&gt; The classic startup launchpad. As legendary as it is contentious. For most entrepreneurs, having their launch covered on TC  is a rite of passage. It may not be Carnegie Hall, but it is Coachella.
 &lt;/p&gt;
 
-&lt;h1&gt;The Vanity Metrics&lt;/h1&gt;
-&lt;h3&gt;Page Views, Uniques, Pages per visit, and Time on Site&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;HACKER NEWS:&lt;/strong&gt; The hive of startup debate, the pulse of the community,
+reddit for the programmer-entrepreneur intelligentsia. Making the front
+page of HN is unadulterated social validation from the tribe.&lt;/p&gt;
 
-&lt;div id=&quot;stacked1&quot;&gt;&lt;/div&gt;
+&lt;p&gt;
+Having your launch on either front page is a common goal, but &lt;em&gt;which
+    is more valuable?&lt;/em&gt;
+&lt;/p&gt;
 
-&lt;script src=&quot;http://d3js.org/d3.v3.min.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
+&lt;p&gt;
+I have some primary data with which I will attempt to answer that
+question. When my startup &lt;a
+    href=&quot;http://www.learndot.com&quot;&gt;Learndot&lt;/a&gt;, a SaaS learning
+platform for businesses, launched on November 14th 2012, it was both
+&lt;a
+    href=&quot;http://techcrunch.com/2012/11/13/learndot-launches-its-learning-platform-for-corporate-universities/&quot;&gt;featured
+    on TechCrunch&lt;/a&gt; and made &lt;a
+    href=&quot;http://hnrankings.info/4779410/&quot;&gt;the front page of Hacker
+    News&lt;/a&gt; at approximately the same time. 
+&lt;/p&gt;
 
-var n = 2, // number of layers
-    m = 2, // number of samples per layer
-    stack = d3.layout.stack(),
-    layers = stack(d3.range(n).map(function() { return [{x: 0, y: 2}, {x:1, y:0.5}]; })),
-    yStackMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); });
+&lt;p&gt;
+There were two goals of the launch: building brand awareness and generating sales leads. Let’s run through our numbers for each to see, in our case, which source was more valuable.
+&lt;/p&gt;
 
-var width = 420,
-    height = 420 
+&lt;h2&gt;Getting the name out: Traffic and Engagement&lt;/h2&gt;
 
-var x = d3.scale.ordinal().domain(d3.range(m)).rangeRoundBands([0, 420], .25);
+&lt;p&gt;
+The first source of value is building brand awareness: moving the needle
+on the number of people who nod knowingly instead of saying “Learndot?
+What’s that?” when our name is mentioned. My metrics for this are
+&lt;ol&gt;
+    &lt;li&gt;Website traffic: number of people who had a brand
+    interaction.&lt;/li&gt;
+    &lt;li&gt;Website engagement: a proxy for quality of the interaction.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/p&gt;
 
-var y = d3.scale.linear().domain([0, yStackMax]).range([height, 0]);
+&lt;h3&gt;Traffic&lt;/h3&gt;
 
-var color = d3.scale.linear().domain([0, n - 1]).range([&quot;#aad&quot;, &quot;#556&quot;]);
+&lt;p&gt;
+This may not come as news, but the era of being TechCrunched is over. From a server load perspective, it is much, much more threatening to be Hacker News’d:
+&lt;/p&gt;
 
-var xAxis = d3.svg.axis().scale(x).tickSize(1).tickPadding(6).orient(&quot;bottom&quot;);
+&lt;script type=&quot;text/javascript&quot; src=&quot;//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js&quot;&gt; {&quot;dataSourceUrl&quot;:&quot;//docs.google.com/a/prlambert.com/spreadsheet/tq?key=0Ao94tqG9MFwRdEkyNTNlaGtpRjctcTVneUVXT3U4V0E&amp;transpose=0&amp;headers=1&amp;range=A1%3AC2&amp;gid=0&amp;pub=1&quot;,&quot;options&quot;:{&quot;titleTextStyle&quot;:{&quot;bold&quot;:true,&quot;color&quot;:&quot;#000&quot;,&quot;fontSize&quot;:16},&quot;series&quot;:{&quot;0&quot;:{&quot;color&quot;:&quot;#ff9900&quot;},&quot;1&quot;:{&quot;color&quot;:&quot;#6aa84f&quot;}},&quot;animation&quot;:{&quot;duration&quot;:500},&quot;backgroundColor&quot;:{&quot;fill&quot;:&quot;#f5f5f5&quot;},&quot;width&quot;:593,&quot;hAxis&quot;:{&quot;title&quot;:&quot;&quot;,&quot;useFormatFromData&quot;:true,&quot;minValue&quot;:null,&quot;viewWindow&quot;:{&quot;min&quot;:null,&quot;max&quot;:null},&quot;maxValue&quot;:null},&quot;vAxes&quot;:[{&quot;title&quot;:&quot;&quot;,&quot;useFormatFromData&quot;:true,&quot;minValue&quot;:null,&quot;viewWindowMode&quot;:null,&quot;viewWindow&quot;:null,&quot;maxValue&quot;:null},{&quot;useFormatFromData&quot;:true}],&quot;booleanRole&quot;:&quot;certainty&quot;,&quot;title&quot;:&quot;Unique Visitors&quot;,&quot;height&quot;:320,&quot;legend&quot;:&quot;right&quot;,&quot;isStacked&quot;:false,&quot;tooltip&quot;:{}},&quot;state&quot;:{},&quot;view&quot;:{},&quot;chartType&quot;:&quot;BarChart&quot;,&quot;chartName&quot;:&quot;Chart 1&quot;} &lt;/script&gt;
 
-var svg = d3.select(&quot;#stacked1&quot;).append(&quot;svg&quot;).append(&quot;g&quot;)
+&lt;p&gt;
+While TechCrunch sent a mere 395 visitors to our site, Hacker News sent
+5,582 – &lt;strong&gt;over 14x&lt;/strong&gt; more. I knew that Hacker News can
+drive a lot of traffic, but I was shocked by how litle TechCrunch sent. 
+&lt;/p&gt;
 
-var layer = svg.selectAll(&quot;.layer&quot;).data(layers).enter().append(&quot;g&quot;).attr(&quot;class&quot;, &quot;layer&quot;).style(&quot;fill&quot;, function(d, i) { return color(i); });
+&lt;p&gt;
+Let’s take a look at what those visitors did when they reached our page:
+&lt;/p&gt;
 
-var rect = layer.selectAll(&quot;rect&quot;).data(function(d) { return d; }).enter().append(&quot;rect&quot;)
-            .attr(&quot;x&quot;, function(d) { return x(d.x); }).attr(&quot;y&quot;, height).attr(&quot;width&quot;, x.rangeBand()).attr(&quot;height&quot;, 0);
+&lt;script type=&quot;text/javascript&quot; src=&quot;//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js&quot;&gt; {&quot;dataSourceUrl&quot;:&quot;//docs.google.com/a/prlambert.com/spreadsheet/tq?key=0Ao94tqG9MFwRdEkyNTNlaGtpRjctcTVneUVXT3U4V0E&amp;transpose=0&amp;headers=1&amp;range=A1%3AC3&amp;gid=1&amp;pub=1&quot;,&quot;options&quot;:{&quot;titleTextStyle&quot;:{&quot;bold&quot;:true,&quot;color&quot;:&quot;#000&quot;,&quot;fontSize&quot;:16},&quot;series&quot;:{&quot;0&quot;:{&quot;color&quot;:&quot;#ff9900&quot;},&quot;1&quot;:{&quot;color&quot;:&quot;#6aa84f&quot;}},&quot;animation&quot;:{&quot;duration&quot;:500},&quot;backgroundColor&quot;:{&quot;fill&quot;:&quot;#f5f5f5&quot;},&quot;width&quot;:656,&quot;hAxis&quot;:{&quot;title&quot;:&quot;pages&quot;,&quot;useFormatFromData&quot;:true,&quot;minValue&quot;:null,&quot;viewWindow&quot;:{&quot;min&quot;:null,&quot;max&quot;:null},&quot;maxValue&quot;:null},&quot;vAxes&quot;:[{&quot;title&quot;:&quot;&quot;,&quot;useFormatFromData&quot;:true,&quot;minValue&quot;:null,&quot;viewWindowMode&quot;:null,&quot;viewWindow&quot;:null,&quot;maxValue&quot;:null},{&quot;useFormatFromData&quot;:true}],&quot;booleanRole&quot;:&quot;certainty&quot;,&quot;title&quot;:&quot;Engagement: Pages Per Visit&quot;,&quot;height&quot;:320,&quot;legend&quot;:&quot;right&quot;,&quot;isStacked&quot;:false,&quot;tooltip&quot;:{}},&quot;state&quot;:{},&quot;view&quot;:{},&quot;chartType&quot;:&quot;BarChart&quot;,&quot;chartName&quot;:&quot;Chart 2&quot;} &lt;/script&gt;
 
-rect.transition().delay(function(d, i) { return i * 10; }).attr(&quot;y&quot;, function(d) { return y(d.y0 + d.y); })
-    .attr(&quot;height&quot;, function(d) { return y(d.y0) - y(d.y0 + d.y); });
+&lt;script type=&quot;text/javascript&quot; src=&quot;//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js&quot;&gt; {&quot;dataSourceUrl&quot;:&quot;//docs.google.com/a/prlambert.com/spreadsheet/tq?key=0Ao94tqG9MFwRdEkyNTNlaGtpRjctcTVneUVXT3U4V0E&amp;transpose=0&amp;headers=1&amp;range=A1%3AC2&amp;gid=5&amp;pub=1&quot;,&quot;options&quot;:{&quot;titleTextStyle&quot;:{&quot;bold&quot;:true,&quot;color&quot;:&quot;#000&quot;,&quot;fontSize&quot;:16},&quot;series&quot;:{&quot;0&quot;:{&quot;color&quot;:&quot;#ff9900&quot;},&quot;1&quot;:{&quot;color&quot;:&quot;#6aa84f&quot;}},&quot;animation&quot;:{&quot;duration&quot;:500},&quot;backgroundColor&quot;:{&quot;fill&quot;:&quot;#f5f5f5&quot;},&quot;width&quot;:658,&quot;hAxis&quot;:{&quot;title&quot;:&quot;Minutes&quot;,&quot;useFormatFromData&quot;:true,&quot;minValue&quot;:null,&quot;viewWindow&quot;:{&quot;min&quot;:null,&quot;max&quot;:null},&quot;maxValue&quot;:null},&quot;vAxes&quot;:[{&quot;title&quot;:&quot;&quot;,&quot;useFormatFromData&quot;:true,&quot;minValue&quot;:null,&quot;viewWindowMode&quot;:null,&quot;viewWindow&quot;:null,&quot;maxValue&quot;:null},{&quot;useFormatFromData&quot;:true}],&quot;booleanRole&quot;:&quot;certainty&quot;,&quot;title&quot;:&quot;Engagement: Time on Site&quot;,&quot;height&quot;:320,&quot;legend&quot;:&quot;right&quot;,&quot;isStacked&quot;:false,&quot;tooltip&quot;:{}},&quot;state&quot;:{},&quot;view&quot;:{},&quot;chartType&quot;:&quot;BarChart&quot;,&quot;chartName&quot;:&quot;Chart 2&quot;} &lt;/script&gt;
 
-svg.append(&quot;g&quot;).attr(&quot;class&quot;, &quot;x axis&quot;).attr(&quot;transform&quot;, &quot;translate(0,&quot; + height + &quot;)&quot;).call(xAxis);
+&lt;p&gt;
+Visitors from TechCrunch explored the site more, averaging 2.15 pages per visit vs. HN’s 1.39. They also spent more time on the site, an average of 2 minutes vs. HN’s 80 seconds. This is particularly surprising – the HN’s link was to a lengthy blog post (takes me 4-5 minutes to read), while TC just linked to our homepage, easily read in about a minute. It appears most people from HN skimmed the article. 
+&lt;/p&gt;
 
-&lt;/script&gt;
+&lt;p&gt;
+While TC visitors were more engaged with the site, HN absolutely demolished TC in total volume, more than making up for the engagement difference. 
+&lt;/p&gt;
+
+&lt;p&gt;
+HN clearly wins this round.
+&lt;/p&gt;
+
+&lt;h2&gt;Filling the Pipe: Generating Leads&lt;/h2&gt;
+
+&lt;p&gt;
+Currently our website is a tool for lead generation, not a full self-service sales channel. We do not publish pricing, but you can request pricing through a form on our homepage. That is a conversion. There are three additional ‘request trial’ forms on the site, which are essentially the same as the request pricing form. Each also counts as a conversion. 
+&lt;/p&gt;
+
+&lt;p&gt;
+When interpreting these conversion rates it’s important to take into consideration our target market: Learndot is a B2B SaaS product for delivering learning and certification inside enterprises. I suspect TC’s audience is more senior, more corporate, and more on ‘the business side’ than HN’s – i.e. much closer to the profile of our target buyer. If we were launching a new social network for programmers, the results might have been very different. I have no idea what they might have been.  
+&lt;/p&gt;
+
+&lt;p&gt;
+Without further ado, Here are the total number of leads generated by each source:
+&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js&quot;&gt; {&quot;dataSourceUrl&quot;:&quot;//docs.google.com/a/prlambert.com/spreadsheet/tq?key=0Ao94tqG9MFwRdEkyNTNlaGtpRjctcTVneUVXT3U4V0E&amp;transpose=0&amp;headers=1&amp;range=A1%3AC2&amp;gid=2&amp;pub=1&quot;,&quot;options&quot;:{&quot;titleTextStyle&quot;:{&quot;bold&quot;:true,&quot;color&quot;:&quot;#000&quot;,&quot;fontSize&quot;:16},&quot;vAxes&quot;:[{&quot;useFormatFromData&quot;:true,&quot;title&quot;:&quot;&quot;,&quot;minValue&quot;:null,&quot;viewWindowMode&quot;:null,&quot;viewWindow&quot;:null,&quot;maxValue&quot;:null},{&quot;useFormatFromData&quot;:true}],&quot;series&quot;:{&quot;0&quot;:{&quot;color&quot;:&quot;#ff9900&quot;},&quot;1&quot;:{&quot;color&quot;:&quot;#6aa84f&quot;}},&quot;booleanRole&quot;:&quot;certainty&quot;,&quot;title&quot;:&quot;Conversions by source&quot;,&quot;animation&quot;:{&quot;duration&quot;:500},&quot;backgroundColor&quot;:{&quot;fill&quot;:&quot;#f5f5f5&quot;},&quot;legend&quot;:&quot;right&quot;,&quot;hAxis&quot;:{&quot;useFormatFromData&quot;:true,&quot;title&quot;:&quot;&quot;,&quot;minValue&quot;:null,&quot;viewWindow&quot;:{&quot;min&quot;:null,&quot;max&quot;:null},&quot;maxValue&quot;:null},&quot;isStacked&quot;:false,&quot;tooltip&quot;:{},&quot;width&quot;:609,&quot;height&quot;:320},&quot;state&quot;:{},&quot;view&quot;:{},&quot;chartType&quot;:&quot;BarChart&quot;,&quot;chartName&quot;:&quot;Chart 3&quot;} &lt;/script&gt;
+
+&lt;p&gt;
+Despite sending considerable more traffic, HN only resulted in 6 conversions – TC drove 22. To articulate just how dramatic this difference is, here are the conversion rates: 
+&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js&quot;&gt; {&quot;dataSourceUrl&quot;:&quot;//docs.google.com/a/prlambert.com/spreadsheet/tq?key=0Ao94tqG9MFwRdEkyNTNlaGtpRjctcTVneUVXT3U4V0E&amp;transpose=0&amp;headers=1&amp;range=A1%3AC2&amp;gid=3&amp;pub=1&quot;,&quot;options&quot;:{&quot;vAxes&quot;:[{&quot;title&quot;:&quot;&quot;,&quot;useFormatFromData&quot;:true,&quot;minValue&quot;:null,&quot;viewWindowMode&quot;:null,&quot;viewWindow&quot;:null,&quot;maxValue&quot;:null},{&quot;useFormatFromData&quot;:true}],&quot;titleTextStyle&quot;:{&quot;bold&quot;:true,&quot;color&quot;:&quot;#000&quot;,&quot;fontSize&quot;:16},&quot;series&quot;:{&quot;0&quot;:{&quot;color&quot;:&quot;#ff9900&quot;},&quot;1&quot;:{&quot;color&quot;:&quot;#6aa84f&quot;}},&quot;title&quot;:&quot;Conversion Rates by Source&quot;,&quot;booleanRole&quot;:&quot;certainty&quot;,&quot;animation&quot;:{&quot;duration&quot;:500},&quot;backgroundColor&quot;:{&quot;fill&quot;:&quot;#f5f5f5&quot;},&quot;legend&quot;:&quot;right&quot;,&quot;hAxis&quot;:{&quot;title&quot;:&quot;&quot;,&quot;useFormatFromData&quot;:true,&quot;minValue&quot;:null,&quot;viewWindow&quot;:{&quot;min&quot;:null,&quot;max&quot;:null},&quot;maxValue&quot;:null},&quot;isStacked&quot;:false,&quot;width&quot;:642,&quot;height&quot;:320},&quot;state&quot;:{},&quot;view&quot;:{},&quot;chartType&quot;:&quot;BarChart&quot;,&quot;chartName&quot;:&quot;Chart 4&quot;} &lt;/script&gt;
+
+&lt;p&gt;
+That’s &lt;strong&gt;0.11%&lt;/strong&gt; for HN vs. &lt;strong&gt;5.57%&lt;/strong&gt; for TC.
+Visitors from TC were &lt;strong&gt;52x&lt;/strong&gt; more likely to convert into a lead. 
+&lt;/p&gt;
+
+&lt;p&gt;
+That said, it’s worth noting that the HN story was a general ‘startup
+story.’ It just happened to be about Learndot. The TC article was a new product announcement. I’d believe that TC’s readership has many early adopters who reads TC specifically to hear about new products to try, which is why TC runs these announcements in the first place.
+&lt;/p&gt;
+
+&lt;p&gt;
+Now let’s ask again: Which front page is more valuable – Hacker News or TechCrunch? Harder to answer this time, but TC won this round. Looks like we might have a stalemate.
+&lt;/p&gt;
+
+&lt;p&gt;
+Let’s put dollars on these numbers to give it a shot.
+&lt;/p&gt;
+
+&lt;h2&gt;Value: Dollars and Cents&lt;/h2&gt;
+
+&lt;p&gt;
+The launch had two goals; we can assign a dollar value to the accomplishment of each.
+&lt;/p&gt;
+
+&lt;p&gt;
+How much would I pay for single, random member of the tech/startup
+community to become aware of Learndot? Awareness is quite far away from
+dollars hitting our bank account; this is a very difficult question to
+answer. My back of the napkin math[1] gives me around 20 cents, so we’ll use that. This means that
+&lt;ul&gt;
+    &lt;li&gt;HN generated &lt;strong&gt;$1116&lt;/strong&gt; of awareness value (5582 uniques).&lt;/li&gt;
+    &lt;li&gt;TC generated &lt;strong&gt;$79&lt;/strong&gt; of awareness value (395 uniques).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+This isn’t entirely fair to TC. Their article made some number of people aware of Learndot who never click through to our site. But I don’t have those numbers, so we’ll chalk it up to bonus points.
+&lt;/p&gt;
+
+&lt;p&gt;
+Ok, what about leads?  Being closer to the money, it’s easier to derive this number by looking at the % of warm leads that become new customers and the expected Lifetime Value (LTV) of a customer [Note: you also must consider that generating the lead is only one component of total customer acquisition cost (CAC) and you want LTV to be at least 4x CAC at this stage]. For us, I’d be happy to pay around $60 for a warm lead. Then
+&lt;ul&gt;
+    &lt;li&gt;HN generated &lt;strong&gt;$360&lt;/strong&gt; of value (6 leads).&lt;/li&gt;
+    &lt;li&gt;TC generated &lt;strong&gt;$1320&lt;/strong&gt; of value (22 leads).&lt;/li&gt;
+    &lt;li&gt;Interesting Note: The expected lead value of a single HN visitor is 5 cents. The expected lead value of a single TC visitor is 2 dollars and 78 cents.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+Summing the two sources of measured value together: 
+&lt;ul&gt;
+    &lt;li&gt;HN created &lt;strong&gt;$1476&lt;/strong&gt; of value.&lt;/li&gt;
+    &lt;li&gt;TC created &lt;strong&gt;$1399&lt;/strong&gt; of value.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js&quot;&gt; {&quot;dataSourceUrl&quot;:&quot;//docs.google.com/a/prlambert.com/spreadsheet/tq?key=0Ao94tqG9MFwRdEkyNTNlaGtpRjctcTVneUVXT3U4V0E&amp;transpose=0&amp;headers=1&amp;range=A1%3AC3&amp;gid=4&amp;pub=1&quot;,&quot;options&quot;:{&quot;titleTextStyle&quot;:{&quot;bold&quot;:true,&quot;color&quot;:&quot;#000&quot;,&quot;fontSize&quot;:16},&quot;vAxes&quot;:[{&quot;useFormatFromData&quot;:true,&quot;title&quot;:&quot;&quot;,&quot;minValue&quot;:null,&quot;viewWindowMode&quot;:null,&quot;viewWindow&quot;:null,&quot;maxValue&quot;:null},{&quot;useFormatFromData&quot;:true}],&quot;booleanRole&quot;:&quot;certainty&quot;,&quot;title&quot;:&quot;Total Value &quot;,&quot;height&quot;:320,&quot;animation&quot;:{&quot;duration&quot;:500},&quot;backgroundColor&quot;:{&quot;fill&quot;:&quot;#f3f3f3&quot;},&quot;legend&quot;:&quot;right&quot;,&quot;width&quot;:607,&quot;hAxis&quot;:{&quot;useFormatFromData&quot;:true,&quot;title&quot;:&quot;&quot;,&quot;minValue&quot;:null,&quot;logScale&quot;:false,&quot;viewWindow&quot;:{&quot;min&quot;:null,&quot;max&quot;:null},&quot;maxValue&quot;:null},&quot;isStacked&quot;:true,&quot;tooltip&quot;:{}},&quot;state&quot;:{},&quot;view&quot;:{},&quot;chartType&quot;:&quot;BarChart&quot;,&quot;chartName&quot;:&quot;Chart 5&quot;} &lt;/script&gt;
+
+&lt;p&gt;
+Hacker News’s formidably destroyed TechCrunch in traffic, but TC impressively parried on conversions to nearly even the score. 
+&lt;/p&gt;
+
+&lt;h3&gt;Non-Tangibles and Bonus Points&lt;/h3&gt;
+
+&lt;p&gt;
+Final considerations are the non-tangibles that come with being on each front page. 
+&lt;/p&gt;
+
+&lt;p&gt;
+TechCrunch:
+&lt;ul&gt;
+    &lt;li&gt;+Branding, TC is a grade-A logo you can use in your
+    marketing.&lt;/li&gt;
+    &lt;li&gt;+Validation to potential investors partners, and traditional
+    media outlets.&lt;/li&gt;
+    &lt;li&gt;+Repeatability: If the story does well, you’ll have a
+    relationship with the author making your future pitches a bit
+    easier.&lt;/li&gt;
+    &lt;li&gt;+Awareness bonus points (see above).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+Hacker News:
+&lt;ul&gt;
+    &lt;li&gt;+Hiring, HN is a pool of quality applicants, a good place to
+    build recognition.&lt;/li&gt;
+    &lt;li&gt;+Street Cred, community contribution and participation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+It’s close, but TC comes ahead in the non tangibles. Their logo is still one the most highly coveted social validation marks for any new startup.
+&lt;/p&gt;
+
+&lt;h2&gt;The Verdict&lt;/h2&gt;
+
+
+&lt;p&gt;
+Which front page is more valuable largely depends on the type of company and stage. I could only assign such high awareness value to unique visitor because this was a launch story – it was a safe assumption that this was a first-time encounter for all visitors.
+&lt;/p&gt;
+
+&lt;p&gt;
+It may be anticlimactic but the truth is that the value of being on each front page, for Learndot, was approximately equal. TC and HN were highly complementary; only through their combination were we able to achieve traction on both goals. The lesson here may be to have a multi-channeled strategy. What we can definitely concluded: in this particular situation of launch Learndot, HN and TC had were at the complete opposite ends of the spectrum: HN drove lots of traffic but almost no conversions, while TC drove little traffic with high conversions. Which is better? As always, it depends on your goals. For us, they were both great channels.
+&lt;/p&gt;
+
+&lt;h3 class=&quot;footnotes&quot;&gt;Footnotes&lt;/h3&gt;
+&lt;p&gt;
+    [1] This is a combination of answering questions like ‘how much
+    would I pay to have all 15,000 people at SXSW Interactive exposed to
+    our brand” and get a $/impression from that and using a very rough
+    conversion rate estimate.&lt;/li&gt;
+&lt;/p&gt;
+
+
 </content>
  </entry>
  
