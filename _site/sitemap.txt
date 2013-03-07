@@ -7,4 +7,5 @@ www.prlambert.com/pages.html
 www.prlambert.com/sitemap.txt
 www.prlambert.com/tags.html
 
+www.prlambert.com/2013/03/07/reverse-engineering-compstak-pitch
 www.prlambert.com/2013/01/29/tc-vs-hn
