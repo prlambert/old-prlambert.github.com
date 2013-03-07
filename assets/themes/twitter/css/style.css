@@ -6,6 +6,12 @@ html, body {
     color: #333;
 }
 
+@media (min-width: 1200px) {
+    .container {
+        width: 940px; /* undo responsive making the main content too wide */
+    }
+}
+
 .navbar {
   margin-bottom: 0;
 }
